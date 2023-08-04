@@ -24,11 +24,14 @@ namespace Input
                 Vector2 axisMouse = Vector2.zero;
                 if(axisMouse == Vector2.zero)
                 {
-                    axisMouse = new Vector2(UnityEngine.Input.GetAxis(MouseX), UnityEngine.Input.GetAxis(MouseY));
+                    axisMouse = UnityAxisMouse();
                 }
                 return axisMouse;
             }
         }
+
+        private static Vector2 UnityAxisMouse() =>
+            new Vector2(UnityEngine.Input.GetAxis(MouseX), UnityEngine.Input.GetAxis(MouseY));
 
         private static Vector2 UnityAxis() => 
             new Vector2(UnityEngine.Input.GetAxis(Horizontal), UnityEngine.Input.GetAxis(Vertical));

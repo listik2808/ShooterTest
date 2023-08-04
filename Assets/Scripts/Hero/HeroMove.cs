@@ -1,8 +1,7 @@
 ﻿using Input;
-using Scripts;
 using UnityEngine;
 
-namespace Hero
+namespace Scripts.Hero
 {
     public class HeroMove : MonoBehaviour
     {
@@ -31,15 +30,10 @@ namespace Hero
                 _direction = new Vector3(_inputService.Axis.x, 0f, _inputService.Axis.y);
                 _direction = transform.TransformDirection(_direction);
                 _direction.y = 0f;
-                //movementVector = _camera.transform.TransformDirection(_inputService.Axis);
-                //movementVector.y = 0;
-                //movementVector.Normalize();
-
-                //transform.forward = movementVector;
             }
 
             movementVector += Physics.gravity;
-            
+
             CharacterController.Move(MovementSpeed * _direction * Time.deltaTime);
         }
     }
