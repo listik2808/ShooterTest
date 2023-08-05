@@ -34,7 +34,10 @@ public class WeaponAKM : MonoBehaviour,Weapon
             
         Vector3 direction = targetPoint - _spawnPoint.position;
         _bullet = _customPool.Get(_spawnPoint);
-        _bullet.transform.forward = direction.normalized;
-        _bullet.SetTarget(direction);
+        if(_bullet!= null)
+        {
+            _bullet.transform.forward = direction.normalized;
+            _bullet.SetTarget(direction);
+        }
     }
 }

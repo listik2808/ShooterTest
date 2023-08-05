@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using Scripts.Inventory;
 
 public class CustomPool :MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private int _countBullet;
+    [SerializeField] private Bag _bag;
 
     private List<Bullet> _bullets = new List<Bullet>();
 
@@ -30,12 +32,17 @@ public class CustomPool :MonoBehaviour
 
     public Bullet Get(Transform point)
     {
-        Bullet bullet = _bullets.FirstOrDefault(b => !b.isActiveAndEnabled);
+        if (_bag.Patron > 0 || _bag.Aboema > 0)
+        {
+            Bullet bullet = _bullets.FirstOrDefault(b => !b.isActiveAndEnabled);
 
-        if(bullet == null)
-            return null;
-        bullet.transform.position = point.position;
-        bullet.gameObject.SetActive(true);
-        return bullet;
+            if (bullet == null)
+                return null;
+            _bag.UsePatron();
+            bullet.transform.position = point.position;
+            bullet.gameObject.SetActive(true);
+            return bullet;
+        }
+        return null;
     }
 }
