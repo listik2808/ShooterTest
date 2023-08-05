@@ -38,5 +38,15 @@ namespace Scripts.HealthBar
 
             Current -= damage;
         }
+
+        public void UpHealth(float hp)
+        {
+            float currentHp = 0;
+            currentHp+= hp;
+            if (currentHp < _maxHealth)
+                Current += hp;
+            else
+                Current = _maxHealth;
+        }
     }
 }
