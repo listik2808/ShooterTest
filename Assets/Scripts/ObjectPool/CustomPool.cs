@@ -22,7 +22,7 @@ public class CustomPool :MonoBehaviour
     {
         while(count > 0)
         {
-            Bullet objectBullet = Instantiate(_bullet);
+            Bullet objectBullet = Instantiate(_bullet,transform.position,Quaternion.identity);
             objectBullet.gameObject.SetActive(false);
             _bullets.Add(objectBullet);
             count--;

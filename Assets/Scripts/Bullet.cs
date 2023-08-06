@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        transform.position += new Vector3(_target.x, _target.y, _target.z)* _speed * Time.deltaTime;
+        transform.position += _target * _speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)

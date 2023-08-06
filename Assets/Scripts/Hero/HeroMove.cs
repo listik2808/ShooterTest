@@ -23,7 +23,7 @@ namespace Scripts.Hero
 
         private void Update()
         {
-            Vector3 movementVector = Vector3.zero;
+            _direction = Vector3.zero;
 
             if (_inputService.Axis.sqrMagnitude > 0.003f)
             {
@@ -32,7 +32,7 @@ namespace Scripts.Hero
                 _direction.y = 0f;
             }
 
-            movementVector += Physics.gravity;
+            _direction += Physics.gravity;
 
             CharacterController.Move(MovementSpeed * _direction * Time.deltaTime);
         }

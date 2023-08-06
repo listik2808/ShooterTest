@@ -19,8 +19,8 @@ namespace Scripts.Inventory
 
         private void Awake()
         {
-            CountPatrons();
             _starPatron = _patron;
+            CountPatrons();
         }
         private void Start()
         {

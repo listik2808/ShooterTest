@@ -1,5 +1,6 @@
 using Input;
 using Scripts;
+using System;
 using UnityEngine;
 
 namespace Scripts.Hero
@@ -8,8 +9,8 @@ namespace Scripts.Hero
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private GameObject _hero;
+        [Range(1,10)]
         [SerializeField] private float _sensivity = 5;
-
         private IInputService _inputService;
         private float _smoothTime = 0.1f;
         private float _xRotation;
@@ -36,7 +37,7 @@ namespace Scripts.Hero
             _yRotation = Mathf.Clamp(_yRotation, -90, 90);
 
             _xRotationVelocity = Mathf.SmoothDamp(_xRotationVelocity, _xRotation, ref _currenVelocityX, _smoothTime);
-            _yRotationVelocity = Mathf.SmoothDamp(_yRotationVelocity, _yRotation, ref _currenVelocityX, _smoothTime);
+            _yRotationVelocity = Mathf.SmoothDamp(_yRotationVelocity, _yRotation, ref _currenVelocityY, _smoothTime);
             _camera.transform.rotation = Quaternion.Euler(-_yRotation, _xRotation, 0f);
             _hero.transform.rotation = Quaternion.Euler(0, _xRotation, 0);
         }

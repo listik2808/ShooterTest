@@ -11,8 +11,6 @@ namespace Scripts
         {
             _game = new Game();
             _game.StateMachina.Enter<BootstarpState>();
-
-            DontDestroyOnLoad(this);
         }
     }
 }
