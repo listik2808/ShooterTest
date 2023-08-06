@@ -1,6 +1,5 @@
 ﻿using Input;
 using Scripts;
-using System;
 
 namespace Assets.Scripts.Infrastructure
 {

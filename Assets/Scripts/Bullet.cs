@@ -12,9 +12,9 @@ public class Bullet : MonoBehaviour
         transform.position += new Vector3(_target.x, _target.y, _target.z)* _speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.collider.TryGetComponent(out Enemy enemy))
+        if(other.TryGetComponent(out Enemy enemy))
         {
             enemy.Damage();
             gameObject.SetActive(false);

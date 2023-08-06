@@ -21,6 +21,9 @@ namespace Scripts.Inventory
         {
             CountPatrons();
             _starPatron = _patron;
+        }
+        private void Start()
+        {
             PatronChanged?.Invoke();
         }
 
@@ -64,7 +67,7 @@ namespace Scripts.Inventory
 
         private void CountPatrons()
         {
-            _patrons = _aboema * _patron;
+            _patrons = _aboema * _starPatron;
         }
 
         private void Recharge()
