@@ -5,10 +5,11 @@ namespace Scripts.Hero
 {
     public class HeroMove : MonoBehaviour
     {
-        public CharacterController CharacterController;
-        public float MovementSpeed = 4.0f;
+        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private float MovementSpeed = 4.0f;
+        [SerializeField] private float _jump;
+        [SerializeField] private float _gravity;
         private IInputService _inputService;
-        private Camera _camera;
         private Vector3 _direction;
 
         private void Awake()
@@ -16,25 +17,23 @@ namespace Scripts.Hero
             _inputService = Game.InputService;
         }
 
-        private void Start()
-        {
-            _camera = Camera.main;
-        }
-
         private void Update()
         {
-            _direction = Vector3.zero;
-
-            if (_inputService.Axis.sqrMagnitude > 0.003f)
+            if (_characterController.isGrounded)
             {
                 _direction = new Vector3(_inputService.Axis.x, 0f, _inputService.Axis.y);
                 _direction = transform.TransformDirection(_direction);
-                _direction.y = 0f;
+
+                if (UnityEngine.Input.GetKey(KeyCode.Space))
+                {
+                    _direction.y += _jump; 
+                }
             }
+            
 
-            _direction += Physics.gravity;
+            _direction.y -= _gravity;
 
-            CharacterController.Move(MovementSpeed * _direction * Time.deltaTime);
+            _characterController.Move(MovementSpeed * _direction * Time.deltaTime);
         }
     }
 }
