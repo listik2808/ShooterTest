@@ -6,11 +6,13 @@ namespace Scripts.Hero
     public class HeroMove : MonoBehaviour
     {
         [SerializeField] private CharacterController _characterController;
-        [SerializeField] private float MovementSpeed = 4.0f;
+        [SerializeField] private float _speedRan;
+        [SerializeField] private float _walkingSpeed;
         [SerializeField] private float _jump;
         [SerializeField] private float _gravity;
         private IInputService _inputService;
         private Vector3 _direction;
+        private float _movementSpeed;
 
         private void Awake()
         {
@@ -33,7 +35,16 @@ namespace Scripts.Hero
 
             _direction.y -= _gravity;
 
-            _characterController.Move(MovementSpeed * _direction * Time.deltaTime);
+            if (UnityEngine.Input.GetKey(KeyCode.LeftShift))
+            {
+                _movementSpeed = _speedRan;
+            }
+            else
+            {
+                _movementSpeed = _walkingSpeed;
+            }
+
+            _characterController.Move(_movementSpeed * _direction * Time.deltaTime);
         }
     }
 }
