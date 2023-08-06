@@ -519,11 +519,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 173619985}
-  _movementSpeed: 0
   _speedRan: 6
   _walkingSpeed: 3
   _jump: 5
-  _gravity: 0.03
+  _gravity: 0.4
 --- !u!114 &173619987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3513,6 +3512,7 @@ MonoBehaviour:
   _canvasAim: {fileID: 2021833029}
   _menu: {fileID: 775303920}
   _heroMouse: {fileID: 173619987}
+  _mouse: {fileID: 1720213966}
 --- !u!4 &1693669425
 Transform:
   m_ObjectHideFlags: 0
@@ -3544,6 +3544,7 @@ GameObject:
   - component: {fileID: 1720213963}
   - component: {fileID: 1720213964}
   - component: {fileID: 1720213965}
+  - component: {fileID: 1720213966}
   m_Layer: 5
   m_Name: Hud
   m_TagString: Untagged
@@ -3675,6 +3676,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1720213966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720213958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e604c0026ec7d1b40b51e1ff937f6aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1734399355
 GameObject:
   m_ObjectHideFlags: 0

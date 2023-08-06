@@ -27,6 +27,16 @@ namespace Scripts.Inventory
             PatronChanged?.Invoke();
         }
 
+        private void Update()
+        {
+            if(UnityEngine.Input.GetKey(KeyCode.R))
+            {
+                if(_aboema > 0 && _patron != _starPatron)
+                    Recharge();
+                PatronChanged?.Invoke();
+            }
+        }
+
         public void UsePatron()
         {
             if (_patron > 0)

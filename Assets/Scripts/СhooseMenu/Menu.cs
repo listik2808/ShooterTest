@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private Canvas _canvasAim;
     [SerializeField] private Canvas _menu;
     [SerializeField] private HeroMouseMove _heroMouse;
+    [SerializeField] private Mouse _mouse;
 
     private bool _gameISPaused = false;
 
@@ -34,6 +35,7 @@ public class Menu : MonoBehaviour
 
     private void Open()
     {
+        _mouse.MouseActivate();
         _menu.gameObject.SetActive(true);
         _heroMouse.enabled= false;
         _canvasAim.gameObject.SetActive(false);
@@ -43,6 +45,7 @@ public class Menu : MonoBehaviour
 
     public void Close()
     {
+        _mouse.MouseDeactivate();
         _heroMouse.enabled = true;
         _canvasAim.gameObject.SetActive(true);
         Time.timeScale = 1;
